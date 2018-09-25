@@ -27,3 +27,7 @@ Future features include:
 
 * Displaying final sequence alignment
 * Making it into a true Python package
+
+## References
+
+Needleman, S. B. & Wunsch, C. D. (1970). A general method applicable to the search for similarities in the amino acid sequence of two proteins. *Journal of Molecular Biology. 48 (3): 443–53.* doi:[10.1016/0022-2836(70)90057-4](https://www.sciencedirect.com/science/article/pii/0022283670900574?via%3Dihub).
