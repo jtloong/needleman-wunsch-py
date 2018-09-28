@@ -54,7 +54,7 @@ def find_score(diagonol, left, top, codon_1, codon_2, match, mismatch, gap):
     max_score = max(scores)
     result.append(max_score)
     
-    indexes = [i for i, s in enumerate(scores) if max_score == scores]
+    indexes = [i for i, s in enumerate(scores) if max_score == s]
     
     directions = []
     for i in indexes:
@@ -64,7 +64,7 @@ def find_score(diagonol, left, top, codon_1, codon_2, match, mismatch, gap):
             directions.append('←')
         elif i == 2:
             directions.append('↑')
-    results.append(directions)
+    result.append(directions)
     return result
 
 
