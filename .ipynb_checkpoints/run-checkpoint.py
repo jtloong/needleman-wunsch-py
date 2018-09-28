@@ -12,17 +12,17 @@ parser.add_argument('--match')
 parser.add_argument('--mismatch')
 parser.add_argument('--gap')
 
-def initialize(matrix_type, len_seq1, len_seq2):
+def initialize(matrix_type, len_seq1, len_seq2, gap):
     if matrix_type == 0:
         matrix = np.zeros((len_seq2 + 1, len_seq1 + 1))
         #First row
         for i, cell in enumerate(matrix[0]):
             if i != 0:
-                matrix[0, i] = cell + (-1 * i)
+                matrix[0, i] = cell + (gap * i)
         #First column
         for i, cell in enumerate(matrix[:,0]):
             if i != 0:
-                matrix[i, 0] = cell + (-1 * i)
+                matrix[i, 0] = cell + (gap * i)
         matrix[1:,1:] = np.nan
         return matrix
     else:
@@ -30,11 +30,11 @@ def initialize(matrix_type, len_seq1, len_seq2):
         matrix[:,:] = 0
         for i, cell in enumerate(matrix[0]):
             if i != 0:
-                matrix[0, i] = str(np.float(cell) + (-1 * i))
+                matrix[0, i] = str(np.float(cell) + (gap * i))
         #First column
         for i, cell in enumerate(matrix[:,0]):
             if i != 0:
-                matrix[i, 0] = np.float(cell) + (-1 * i)
+                matrix[i, 0] = np.float(cell) + (gap * i)
         return matrix
 
 def find_score(diagonol, left, top, codon_1, codon_2, match, mismatch, gap):
@@ -79,8 +79,8 @@ def main(args):
         mismatch = float(args.mismatch)
         gap = float(args.gap)
 
-        score_matrix = initialize(0, len_seq1, len_seq2)
-        direction_matrix = initialize(1, len_seq1, len_seq2)
+        score_matrix = initialize(0, len_seq1, len_seq2, gap)
+        direction_matrix = initialize(1, len_seq1, len_seq2, gap)
 
         for i, row in enumerate(score_matrix):
             if i != 0:
